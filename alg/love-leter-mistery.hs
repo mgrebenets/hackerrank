@@ -11,24 +11,24 @@ import Data.Char (ord)
 -- the do element diff of 2 splits, but don't forget to reverse one of them
 -- then take the abs of diffs and sum them up
 
-split :: [Char] -> ([Char], [Char])
+split :: String -> (String, String)
 split l = (take half l, drop (half + adj) l)
-where
-  len = length l
-  half = div len 2
-  adj = mod len 2
+  where
+    len = length l
+    half = div len 2
+    adj = mod len 2
 
-  listDiff :: ([Char], [Char]) -> Int
-  listDiff (l, r) = sum (map abs (zipWith (-) (map ord l) (map ord (reverse r))))
+listDiff :: (String, String) -> Int
+listDiff (l, r) = sum (map abs (zipWith (-) (map ord l) (map ord (reverse r))))
 
-  minPalindrome :: [Char] -> Int
-  minPalindrome list = listDiff (split list)
+minPalindrome :: String -> Int
+minPalindrome list = listDiff (split list)
 
-  main :: IO ()
-  main = do
-    n <- readLn :: IO Int
-    arr <- replicateM n getLine
-    --  let s = map split arr
-    --  mapM_ print s
-    let ans = map minPalindrome arr
-    mapM_ print ans
+main :: IO ()
+main = do
+  n <- readLn :: IO Int
+  arr <- replicateM n getLine
+  --  let s = map split arr
+  --  mapM_ print s
+  let ans = map minPalindrome arr
+  mapM_ print ans
