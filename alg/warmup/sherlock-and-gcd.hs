@@ -13,12 +13,12 @@ readNumbers = words
 -- if there is a 1, the answer is YES right away
 -- if there is no 1, then gcd should be used, but how...
 
--- ok, so the goal is to find 2 elements for which gcd is 0
+-- ok, so the goal is to find 2 elements for which gcd is 1
 -- as soon as these 2 are found, say YES
 -- question is how to find these 2
 
 -- answer - go left to right in optionally sorted array
--- if neighbours gcd is 0 - got the answer, if not, then the two have gcd
+-- if neighbours gcd is 1 - got the answer, if not, then the two have gcd
 -- so can safely throw any of them out of the subset I'm looking for
 -- so just drop the first and compare second to next in the list
 -- and so on
