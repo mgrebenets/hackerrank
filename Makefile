@@ -7,13 +7,16 @@
 # But can be further exended to support compilation as well
 
 # Actual directory of this Makefile, not where it is called form
-SELF_DIR = $(dir $(lastword $(MAKEFILE_LIST)))
+SELF_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
 
 # Compile (YES) vs interpret (NO)
 COMPILE = NO
 
 # Temporary directory
 TMP_DIR := $(shell mktemp -dt "XXXXXXXX")
+
+# Build directory
+BUILD_DIR := $(CURDIR)/build
 
 # OSX SDK
 OSX_SDK := $(shell xcrun --show-sdk-path --sdk macosx)
@@ -47,10 +50,6 @@ tc-path = $(TC_DIR)/$(patsubst %.$(2),%-tc$(1).txt,$(3))
 # CMD - interpreter command to run the source file (e.g. runghc, xcrun swift, etc.)
 run-tc = cat $(call tc-path,$(1),$(2),$(3)) | $(4) $@
 
-# Swift (run as is)
-# %.swift: .PHONY
-	# @$(call run-tc,$(TC),swift,$@,$(SWIFT))
-
 # Enable phony targets
 .PHONY:
 
@@ -76,19 +75,22 @@ else	# Compile and run
 
 # Swift compile and run
 %.swift: .PHONY
+	@mkdir -p $(BUILD_DIR)
+
 	@# build stdio module
-	@$(SWIFTC) -sdk $(OSX_SDK) \
+	@$(SWIFTC) \
+		-sdk $(OSX_SDK) \
 		-emit-library \
-		-o $(TMP_DIR)/$(SWIFT_STDIO_LIB_NAME) \
+		-o $(BUILD_DIR)/$(SWIFT_STDIO_LIB_NAME) \
 		-emit-module $(SELF_DIR)/$(SWIFT_STDIO).swift \
 		-module-name $(SWIFT_STDIO)
 
 	@# run linking against stdio module
 	@cat $(call tc-path,$(TC),swift,$@) \
 		| $(SWIFT) \
-			-l$(TMP_DIR)/$(SWIFT_STDIO_LIB_NAME) \
-			-I $(TMP_DIR) -module-link-name $(SWIFT_STDIO) \
 			-sdk $(OSX_SDK) \
+			-l$(BUILD_DIR)/$(SWIFT_STDIO_LIB_NAME) \
+			-I $(BUILD_DIR) -module-link-name $(SWIFT_STDIO) \
 			-D CLI_BUILD \
 			$@
 
@@ -98,6 +100,16 @@ else	# Compile and run
 
 endif	# Compile vs Run
 
+# Prepare for submission
+%.swift-prep:
+	@cat $(SELF_DIR)/$(SWIFT_STDIO).swift $(patsubst %-prep,%,$@) | grep -v -E "#if|#endif" | pbcopy
+	@echo "Solution is copied to clipboard, use ⌘ + V to paste it to HackerRank."
+
+# Clean
+clean:
+	@rm -rf $(BUILD_DIR)
+
+# Help
 help:
 	@echo "Run test case for given source file."
 	@echo "Targets:"
