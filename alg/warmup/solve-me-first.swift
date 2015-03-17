@@ -22,7 +22,7 @@ public func solveMeFirst() {
     println(a + b)
 }
 
-#if CLI
+#if CLI_BUILD
     import StdIO
     // silence the xcode, it doesn't like just calling solveMeFirst() directly
     let x: Void = solveMeFirst()

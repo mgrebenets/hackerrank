@@ -14,16 +14,10 @@ public func getLine() -> String {
     var c = getchar()
     // 10 is ascii code for newline
     while c != EOF && c != 10 && countElements(buf) < Int.max {
-        buf.append(UnicodeScalar(UInt32(c)))
+        buf.append(UnicodeScalar(UInt32(CChar(c))))
         c = getchar()
     }
     return buf
-}
-
-/// Read line from standard input
-///:returns: string
-public func readLn() -> String {
-    return getLine()
 }
 
 /// Read line from standard input and convert to integer

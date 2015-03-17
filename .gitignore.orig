@@ -1,7 +1,17 @@
+*.o
+*.hi
 <<<<<<< HEAD
 # Xcode
 #
 build/
+=======
+*.dylib
+*.swiftmodule
+*.tmp
+
+# Xcode noise
+*.mode1v3
+>>>>>>> WIP on makefile
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -25,7 +35,3 @@ DerivedData
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
 #
 # Pods/
-=======
-*.o
-*.hi
->>>>>>> ACM ICPC

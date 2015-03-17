@@ -2,6 +2,7 @@
 *.hi
 # Xcode
 #
+*.tmp
 build/
 *.pbxuser
 !default.pbxuser
