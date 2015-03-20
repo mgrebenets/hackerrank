@@ -19,6 +19,10 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+# Xcode 4 noise
+*.xcodeproj/project.xcworkspace/*
+*.xcodeproj/xcuserdata/*
+*xcschememanagement.plist
 
 # CocoaPods
 #

@@ -13,7 +13,8 @@ public func getLine() -> String {
     var buf = String()
     var c = getchar()
     // 10 is ascii code for newline
-    while c != EOF && c != 10 && countElements(buf) < Int.max {
+    // TODO: add |- && count(buf) < Int.max -| when 1.2 is supported
+     while c != EOF && c != 10 {
         buf.append(UnicodeScalar(UInt32(c)))
         c = getchar()
     }

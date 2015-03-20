@@ -23,10 +23,14 @@ OSX_SDK := $(shell xcrun --show-sdk-path --sdk macosx)
 
 # Swift executables
 # TODO: 10.9 use 'xcrun swift(c)', since 10.10 can use just 'swift(c)'
+XCODE = Xcode
+DEVELOPER_DIR = /Applications/$(XCODE).app/Contents/Developer
 SWIFT = swift
 SWIFTC = swiftc
 SWIFT_STDIO = StdIO
 SWIFT_STDIO_LIB_NAME = lib$(SWIFT_STDIO).dylib
+
+
 
 # Test cases directory
 TC_DIR = tc

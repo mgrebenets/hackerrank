@@ -12,9 +12,6 @@ readElement e = (n, s)
 count :: [(Int, String)] -> [(Int, Int)]
 count input = assocs . accumArray (+) 0 (0, 99) . map (\(i, s) -> (i, 1)) $ input
 
--- conv :: [(Int, Int)] -> [Int]
--- conv counts = assocs . accumArray (+) 0 (0, 99) . map (\(i, c) -> (i, c)) $ counts
-
 countLessThan = mapAccumL (\acc (x, c) -> (acc + c, (x, acc + c))) 0
 
 main :: IO ()

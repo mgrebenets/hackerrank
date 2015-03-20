@@ -5,9 +5,9 @@ public func solveMeSecond() {
 
     let s: String = readLn()
     for _ in 0..<n {
-        let ints: [Int] = readLn()
-        let sum = ints.reduce(0, +)
-        println(sum)
+       let ints: [Int] = readLn()
+       let sum = ints.reduce(0, +)
+       println(sum)
     }
 }
 
