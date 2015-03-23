@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		58390DDE1ABBB6E30077CC3D /* pangrams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58390DD71ABBB6E30077CC3D /* pangrams.swift */; };
 		586713CE1AB5AF23004D8FD9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586713CD1AB5AF23004D8FD9 /* main.swift */; };
+		5883D2781ABFE4FF005B5475 /* gem-stones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5883D2771ABFE4FF005B5475 /* gem-stones.swift */; };
 		58E04FF81AB5AFA800606C1B /* solve-me-first.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E04FD71AB5AFA800606C1B /* solve-me-first.swift */; };
 		58E04FF91AB5AFA800606C1B /* solve-me-second.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E04FD91AB5AFA800606C1B /* solve-me-second.swift */; };
 		58E04FFB1AB5B17800606C1B /* StdIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E04FFA1AB5B17800606C1B /* StdIO.swift */; };
@@ -27,7 +28,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		58390DD61ABBB6E30077CC3D /* pangrams.hs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pangrams.hs; sourceTree = "<group>"; };
 		58390DD71ABBB6E30077CC3D /* pangrams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pangrams.swift; sourceTree = "<group>"; };
 		58390DD91ABBB6E30077CC3D /* pangrams-tc0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pangrams-tc0.txt"; sourceTree = "<group>"; };
 		58390DDA1ABBB6E30077CC3D /* pangrams-tc1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pangrams-tc1.txt"; sourceTree = "<group>"; };
@@ -35,6 +35,7 @@
 		58390DDC1ABBB6E30077CC3D /* pangrams-tc8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pangrams-tc8.txt"; sourceTree = "<group>"; };
 		586713CA1AB5AF23004D8FD9 /* HackerRank */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HackerRank; sourceTree = BUILT_PRODUCTS_DIR; };
 		586713CD1AB5AF23004D8FD9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5883D2771ABFE4FF005B5475 /* gem-stones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "gem-stones.swift"; sourceTree = "<group>"; };
 		58E04FBD1AB5AFA800606C1B /* counting-sort-1-tc0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "counting-sort-1-tc0.txt"; sourceTree = "<group>"; };
 		58E04FBE1AB5AFA800606C1B /* counting-sort-2-tc0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "counting-sort-2-tc0.txt"; sourceTree = "<group>"; };
 		58E04FBF1AB5AFA800606C1B /* counting-sort-3-tc0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "counting-sort-3-tc0.txt"; sourceTree = "<group>"; };
@@ -85,7 +86,7 @@
 		58390DD11ABBB6E30077CC3D /* strings */ = {
 			isa = PBXGroup;
 			children = (
-				58390DD61ABBB6E30077CC3D /* pangrams.hs */,
+				5883D2771ABFE4FF005B5475 /* gem-stones.swift */,
 				58390DD71ABBB6E30077CC3D /* pangrams.swift */,
 				58390DD81ABBB6E30077CC3D /* tc */,
 			);
@@ -269,6 +270,7 @@
 				58E04FF91AB5AFA800606C1B /* solve-me-second.swift in Sources */,
 				58E04FFB1AB5B17800606C1B /* StdIO.swift in Sources */,
 				58390DDE1ABBB6E30077CC3D /* pangrams.swift in Sources */,
+				5883D2781ABFE4FF005B5475 /* gem-stones.swift in Sources */,
 				58E04FF81AB5AFA800606C1B /* solve-me-first.swift in Sources */,
 				586713CE1AB5AF23004D8FD9 /* main.swift in Sources */,
 			);

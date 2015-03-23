@@ -13,6 +13,6 @@ public func solveMeSecond() {
 
 #if CLI_BUILD
     import StdIO
-    // silence the xcode, it doesn't like just calling solveMeFirst() directly
+    // silence the xcode, it doesn't like just calling funcName() directly
     let x: Void = solveMeSecond()
 #endif
