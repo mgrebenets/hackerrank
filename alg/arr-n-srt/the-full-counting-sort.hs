@@ -1,6 +1,7 @@
 import Control.Monad
-import Data.Array
 import Data.Array.IO
+import Data.Array
+import Data.Array.Base (unsafeThaw, thaw)
 import Data.List
 
 -- convert element string into a tuple of int and string values
@@ -10,13 +11,14 @@ readElement e = (n, s)
         n = read (head arr) :: Int
         s = last arr
 
+-- 99 is the max int input, so code below is OK
 count :: [(Int, String)] -> [(Int, Int)]
 count input = assocs . accumArray (+) 0 (0, 99) . map (\(i, s) -> (i, 1)) $ input
 
-countLessThan = mapAccumL (\acc (x, c) -> (acc + c, (x, acc + c))) 0
+-- countLessThan = mapAccumL (\acc (x, c) -> (acc + c, (x, acc + c))) 0
 
 -- split :: [a] -> ([a], [a])
-split l = (take half l, drop (half + adj) l)
+split l = (take half l, drop half l)
   where
     len = length l
     half = div len 2
@@ -47,26 +49,92 @@ countingSort l = concatMap (uncurry $ flip replicate)
 
 
 -- placeElement :: (Int, String) -> m (a Int Int) -> m (a Int String) -> Array Int Int -> (Int, String)
-placeElement num s shiftArr outArr countsArr = do
-    writeArray outArr placeIndex (num, s)
-    writeArray shiftArr num (shiftArr!num + 1)
-    -- return (num, s)
-    return 0
-    where
-        placeIndex = lessThanCount - 1 - shiftArr!num
-        lessThanCount = countsArr!num
+-- placeElement :: Int -> String -> IO (IOArray Int Int) -> IO (IOArray Int (Int, String)) -> [Int] -> Int
+placeElement num s outArr lessThanCounts diffsArr = do
+    let lessThanCount = lessThanCounts!num
+    curDiff <- readArray diffsArr num
+    let placeIndex = lessThanCount - curDiff
+    writeArray outArr placeIndex s
+    writeArray diffsArr num (curDiff - 1)
+    return Nothing
 
 -- smartCountingSort :: [(Int, String)] -> [Int] -> m (Int, (t0, String))
-smartCountingSort list counts = do
-    map (\(num, s) -> placeElement num s shiftArr outArr countsArr) list
-    -- return outArr
-    return outArr
-    -- return (0, "")
-    where
-        outArr = newArray (0, len - 1) (-1, "")
-        shiftArr = newArray (0, len - 1) 0
-        countsArr = listArray (0, length counts - 1) counts
-        len = length list
+smartCountingSort list = do
+    let listLen = length list
+    let countsLen = 100
+    let countsArr = accumArray (+) 0 (0, pred countsLen) . map (\(i, s) -> (i, 1)) $ list
+    print "done countsArr"
+    let lessThanCountsList = snd (mapAccumL (\acc (x, c) -> (acc + c, (x, acc + c))) 0 (assocs countsArr))
+    print "done lessThanCountsList"
+    let lessThanCountsArr = listArray (0, pred countsLen) (map snd lessThanCountsList)
+    print "done lessThanCountsArr"
+
+    outArr <- newArray (0, pred listLen) "-" :: IO (IOArray Int String)
+    print "done outArr"
+
+    -- this looks like to be the costly part
+    -- find a way to reduce this step, e.g. get the counts as part of getting less than counts
+    diffsArr <- unsafeThaw countsArr :: IO (IOArray Int Int)
+    print "done diffsArr"
+
+    let (fstHalf, sndHalf) = split list
+    print "done split"
+
+    forM_ fstHalf $ \(num, s) -> do
+        placeElement num "-" outArr lessThanCountsArr diffsArr
+        return Nothing
+
+    print "done 1st half"
+
+    forM_ sndHalf $ \(num, s) -> do
+        -- print (num, s)
+        placeElement num s outArr lessThanCountsArr diffsArr
+        return Nothing
+
+    print "done 2nd half"
+
+    x <- getElems outArr
+    print "done get elems"
+    return (unwords x)
+
+    -- return Nothing
+
+
+
+-- -- smartCountingSort :: [(Int, String)] -> [Int] -> m (Int, (t0, String))
+-- smartCountingSort list counts lessThanCounts = do
+--     let len = length list
+--     outArr <- newArray (0, pred len) "-" :: IO (IOArray Int String)
+--     -- print "done outArr"
+--     -- shiftArr <- newArray (0, pred len) 0 :: IO (IOArray Int Int)
+--     -- let zippedCounts = zip counts (0:counts)
+--     -- let diffsList = map (uncurry (-)) zippedCounts
+--     diffsArr <- newListArray (0, pred (length counts)) (map snd counts) :: IO (IOArray Int Int)
+--     -- print "done diffsArr"
+--     let lessThanCountsArr = listArray (0, pred (length lessThanCounts)) lessThanCounts
+--     -- print lessThanCountsArr
+--     -- print "done lessThanCountsArr"
+--     let (fstHalf, sndHalf) = split list
+--     -- print "done split"
+--
+--     forM_ fstHalf $ \(num, s) -> do
+--         placeElement num "-" outArr lessThanCountsArr diffsArr
+--         return Nothing
+--
+--     -- print "done 1st half"
+--
+--     forM_ sndHalf $ \(num, s) -> do
+--         -- print (num, s)
+--         placeElement num s outArr lessThanCountsArr diffsArr
+--         return Nothing
+--
+--     -- print "done 2nd half"
+--
+--     x <- getElems outArr
+--     -- print "done get elems"
+--     return (unwords x)
+--
+--     -- return Nothing
 
 
 main :: IO ()
@@ -74,31 +142,18 @@ main = do
     n <- readLn :: IO Int
     list <- replicateM n getLine
     let input = map readElement list
-    let (fstHalf, sndHalf) = split input
-    print input
-    print "---"
-    print fstHalf
-    print sndHalf
-    print "---"
-    let counts = count input
-    print counts
+    -- let lessThanCountsArr = mapAccum (\acc (x, c) -> (acc + c, (x, acc + c))) 0 countsArr
+    smartSorted <- smartCountingSort input
+    -- putStrLn smartSorted
     print "---"
 
-    print (countLessThan counts)
-    print "---"
-    print (map snd (snd (countLessThan counts)))
-    print "---"
 
-    let sorted = countingSort input counts
-    print sorted
-    print "---"
-
-    let lessCounts = map snd (snd (countLessThan counts))
-    let smartSorted = smartCountingSort input lessCounts
-    -- print smartSorted
-    print "---"
-
-    -- have the counts, now need to go through them and accumulate a new array
-    -- for each count, take the second value in the tuple and sum it up with accumulated value and put result into resulting array
-    -- let ans = map snd (snd (countLessThan counts))
-    -- putStr $ unwords (map show ans)
+    -- let counts = count input
+    -- -- print counts
+    -- -- print "done counts"
+    -- let lessThanCounts = map snd (snd (countLessThan counts))
+    -- -- print lessCounts
+    -- -- print "done less counts"
+    -- smartSorted <- smartCountingSort input counts lessThanCounts
+    -- -- print "done"
+    -- putStrLn smartSorted
