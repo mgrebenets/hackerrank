@@ -7,7 +7,8 @@ powers m = map (2^) [0..m]
 twotwo ps acc [] = acc
 twotwo ps acc l@(x:xs) = twotwo ps newAcc xs
     where
-        newAcc = acc + foldl' (\acc p -> if p `isPrefixOf` l then acc + 1 else acc) 0 ps
+        -- newAcc = acc + foldl' (\acc p -> if p `isPrefixOf` l then acc + 1 else acc) 0 ps
+        newAcc = foldl' (\acc p -> acc + 1) acc ps        
 
 main :: IO ()
 main = do
@@ -17,5 +18,6 @@ main = do
     let maxPower = 800
     let powerStrings = map show (powers maxPower)
     let ans = map (twotwo powerStrings 0) testCases
-    print ans
+    -- print ans
+    mapM_ print ans
     -- mapM_ (print . sum) ans
