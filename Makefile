@@ -22,8 +22,6 @@ BUILD_DIR := $(CURDIR)/build
 # just replace . with -
 executable-name = $(subst .,-,$(1))
 
-V = $(shell echo "v $@")
-
 # OSX SDK
 OSX_SDK := $(shell xcrun --show-sdk-path --sdk macosx)
 
@@ -36,6 +34,8 @@ SWIFTC = swiftc
 SWIFT_STDIO = StdIO
 SWIFT_STDIO_LIB_NAME = lib$(SWIFT_STDIO).dylib
 
+# C/CPP/Objective-C
+CLANG = clang++
 
 
 # Test cases directory
@@ -62,6 +62,7 @@ run-tc = cat $(call tc-path,$(1),$(2),$(3)) | $(4) $@
 
 # Enable phony targets
 .PHONY:
+
 
 ifeq ($(COMPILE), NO)	# Interpret
 
@@ -116,10 +117,18 @@ else	# Compile and run
 
 endif	# Compile vs Run
 
+.FORCE:
+# C++, compile only (ugly circular dependency, don't know how to fix it yet)
+%.cpp: %.cpp .FORCE
+	@$(CLANG) $@ -DCLI_BUILD -o $(BUILD_DIR)/$(call executable-name,$@)
+	@cat $(call tc-path,$(TC),cpp,$@) | $(BUILD_DIR)/$(call executable-name,$@)
+
+
 # Prepare for submission
 %.swift-prep:
 	@cat $(SELF_DIR)/$(SWIFT_STDIO).swift $(patsubst %-prep,%,$@) | grep -v -E "#if|#endif" | pbcopy
 	@echo "Solution is copied to clipboard, use ⌘ + V to paste it to HackerRank."
+
 
 # Clean
 clean:
