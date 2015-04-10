@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		58390DDE1ABBB6E30077CC3D /* pangrams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58390DD71ABBB6E30077CC3D /* pangrams.swift */; };
+		58515FA81AD49321004D5D2C /* two-two.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58515FA71AD49321004D5D2C /* two-two.swift */; };
 		586713CE1AB5AF23004D8FD9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586713CD1AB5AF23004D8FD9 /* main.swift */; };
 		5883D2781ABFE4FF005B5475 /* gem-stones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5883D2771ABFE4FF005B5475 /* gem-stones.swift */; };
+		58C6AA0C1AD732DB00F3A047 /* two-two.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C6AA0A1AD732DB00F3A047 /* two-two.cpp */; };
+		58C6AA631AD752F900F3A047 /* two-two.c in Sources */ = {isa = PBXBuildFile; fileRef = 58C6AA621AD752F900F3A047 /* two-two.c */; };
 		58E04FF81AB5AFA800606C1B /* solve-me-first.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E04FD71AB5AFA800606C1B /* solve-me-first.swift */; };
 		58E04FF91AB5AFA800606C1B /* solve-me-second.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E04FD91AB5AFA800606C1B /* solve-me-second.swift */; };
 		58E04FFB1AB5B17800606C1B /* StdIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E04FFA1AB5B17800606C1B /* StdIO.swift */; };
@@ -33,9 +36,13 @@
 		58390DDA1ABBB6E30077CC3D /* pangrams-tc1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pangrams-tc1.txt"; sourceTree = "<group>"; };
 		58390DDB1ABBB6E30077CC3D /* pangrams-tc8-ans.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pangrams-tc8-ans.txt"; sourceTree = "<group>"; };
 		58390DDC1ABBB6E30077CC3D /* pangrams-tc8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pangrams-tc8.txt"; sourceTree = "<group>"; };
+		58515FA71AD49321004D5D2C /* two-two.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "two-two.swift"; sourceTree = "<group>"; };
 		586713CA1AB5AF23004D8FD9 /* HackerRank */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HackerRank; sourceTree = BUILT_PRODUCTS_DIR; };
 		586713CD1AB5AF23004D8FD9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5883D2771ABFE4FF005B5475 /* gem-stones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "gem-stones.swift"; sourceTree = "<group>"; };
+		58C6AA0A1AD732DB00F3A047 /* two-two.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "two-two.cpp"; sourceTree = "<group>"; };
+		58C6AA0B1AD732DB00F3A047 /* two-two.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "two-two.h"; sourceTree = "<group>"; };
+		58C6AA621AD752F900F3A047 /* two-two.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "two-two.c"; sourceTree = "<group>"; };
 		58E04FBD1AB5AFA800606C1B /* counting-sort-1-tc0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "counting-sort-1-tc0.txt"; sourceTree = "<group>"; };
 		58E04FBE1AB5AFA800606C1B /* counting-sort-2-tc0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "counting-sort-2-tc0.txt"; sourceTree = "<group>"; };
 		58E04FBF1AB5AFA800606C1B /* counting-sort-3-tc0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "counting-sort-3-tc0.txt"; sourceTree = "<group>"; };
@@ -86,8 +93,12 @@
 		58390DD11ABBB6E30077CC3D /* strings */ = {
 			isa = PBXGroup;
 			children = (
+				58515FA71AD49321004D5D2C /* two-two.swift */,
 				5883D2771ABFE4FF005B5475 /* gem-stones.swift */,
 				58390DD71ABBB6E30077CC3D /* pangrams.swift */,
+				58C6AA0A1AD732DB00F3A047 /* two-two.cpp */,
+				58C6AA621AD752F900F3A047 /* two-two.c */,
+				58C6AA0B1AD732DB00F3A047 /* two-two.h */,
 				58390DD81ABBB6E30077CC3D /* tc */,
 			);
 			path = strings;
@@ -271,8 +282,11 @@
 				58E04FFB1AB5B17800606C1B /* StdIO.swift in Sources */,
 				58390DDE1ABBB6E30077CC3D /* pangrams.swift in Sources */,
 				5883D2781ABFE4FF005B5475 /* gem-stones.swift in Sources */,
+				58515FA81AD49321004D5D2C /* two-two.swift in Sources */,
+				58C6AA0C1AD732DB00F3A047 /* two-two.cpp in Sources */,
 				58E04FF81AB5AFA800606C1B /* solve-me-first.swift in Sources */,
 				586713CE1AB5AF23004D8FD9 /* main.swift in Sources */,
+				58C6AA631AD752F900F3A047 /* two-two.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,22 +371,29 @@
 		586713D21AB5AF23004D8FD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/alg/strings/build",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HackerRank-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		586713D31AB5AF23004D8FD9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/alg/strings/build",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HackerRank-Bridging-Header.h";
 			};
 			name = Release;
 		};

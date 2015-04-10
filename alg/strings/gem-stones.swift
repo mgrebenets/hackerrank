@@ -2,12 +2,12 @@
 /// https://www.hackerrank.com/challenges/gem-stones
 public func gemStones() {
     let n: Int = readLn()
-    // TODO: this is ugly, find a better way to get all latin1 chars
     var input: [Set<Character>] = []
     for _ in 0..<n {
         input.append(Set(getLine()))
     }
 
+    // TODO: this is ugly, find a better way to get all latin1 chars
     let asciiSet = Set("abcdefghijklmnopqrstuvwxyz")
     let intersection = input.reduce(asciiSet) { acc, str in
         acc.intersect(str)

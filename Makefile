@@ -81,6 +81,9 @@ else	# Compile and run
 %.swift: .PHONY
 	@mkdir -p $(BUILD_DIR)
 
+	@export DEVELOPER_DIR=$(DEVELOPER_DIR)
+	@echo "DD: $(DEVELOPER_DIR), $(shell swift -version)"
+
 	@# build stdio module
 	@$(SWIFTC) \
 		-sdk $(OSX_SDK) \
@@ -90,6 +93,7 @@ else	# Compile and run
 		-module-name $(SWIFT_STDIO)
 
 	@# run linking against stdio module
+	@# TODO: this is wrong, it's not compiling here
 	@cat $(call tc-path,$(TC),swift,$@) \
 		| $(SWIFT) \
 			-sdk $(OSX_SDK) \
