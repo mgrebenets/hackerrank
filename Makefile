@@ -18,6 +18,12 @@ TMP_DIR := $(shell mktemp -dt "XXXXXXXX")
 # Build directory
 BUILD_DIR := $(CURDIR)/build
 
+# Executable name for source file name
+# just replace . with -
+executable-name = $(subst .,-,$(1))
+
+V = $(shell echo "v $@")
+
 # OSX SDK
 OSX_SDK := $(shell xcrun --show-sdk-path --sdk macosx)
 
@@ -81,11 +87,8 @@ else	# Compile and run
 %.swift: .PHONY
 	@mkdir -p $(BUILD_DIR)
 
-	@export DEVELOPER_DIR=$(DEVELOPER_DIR)
-	@echo "DD: $(DEVELOPER_DIR), $(shell swift -version)"
-
 	@# build stdio module
-	@$(SWIFTC) \
+	@DEVELOPER_DIR=$(DEVELOPER_DIR) $(SWIFTC) \
 		-sdk $(OSX_SDK) \
 		-emit-library \
 		-o $(BUILD_DIR)/$(SWIFT_STDIO_LIB_NAME) \
@@ -93,14 +96,19 @@ else	# Compile and run
 		-module-name $(SWIFT_STDIO)
 
 	@# run linking against stdio module
-	@# TODO: this is wrong, it's not compiling here
-	@cat $(call tc-path,$(TC),swift,$@) \
-		| $(SWIFT) \
+	@DEVELOPER_DIR=$(DEVELOPER_DIR) $(SWIFTC) \
 			-sdk $(OSX_SDK) \
-			-l$(BUILD_DIR)/$(SWIFT_STDIO_LIB_NAME) \
-			-I $(BUILD_DIR) -module-link-name $(SWIFT_STDIO) \
+			-L $(BUILD_DIR) \
+			-l$(SWIFT_STDIO) \
+			-I $(BUILD_DIR) \
+			-module-link-name $(SWIFT_STDIO) \
 			-D CLI_BUILD \
+			-o $(BUILD_DIR)/$(call executable-name,$@) \
 			$@
+
+	@# run the executable just built
+	@cat $(call tc-path,$(TC),swift,$@) | $(BUILD_DIR)/$(call executable-name,$@)
+
 
 # Ruby
 %.rb: .PHONY
