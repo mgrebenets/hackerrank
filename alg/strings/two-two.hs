@@ -19,7 +19,7 @@ twotwo ps acc l@(x:xs) = twotwo ps newAcc xs
         -- newAcc = acc + foldr (\p a -> if p `isPrefixOf` l then a + 1 else a) acc ps
         -- newAcc = foldl' (\a p -> a) 0 ps
         newAcc = acc + foldl' (\a p -> a + 1) 0 ps
-        -- newAcc = foldr (\p a -> a) acc ps
+        -- newAcc = foldr (\p a -> a) acc ps        
 
 main :: IO ()
 main = do
