@@ -16,7 +16,7 @@ description:
 category:
 author:
 tested-with:
-data-files: acm-icpc-team.hs
+data-files: acm-icpc-team.hs connected-cell-in-a-grid.hs
 data-dir: ""
 extra-source-files:
 extra-tmp-files:
