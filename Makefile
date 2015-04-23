@@ -120,6 +120,7 @@ endif	# Compile vs Run
 .FORCE:
 # C++, compile only (ugly circular dependency, don't know how to fix it yet)
 %.cpp: %.cpp .FORCE
+	@mkdir -p $(BUILD_DIR)
 	@$(CLANG) $@ -DCLI_BUILD -o $(BUILD_DIR)/$(call executable-name,$@)
 	@cat $(call tc-path,$(TC),cpp,$@) | $(BUILD_DIR)/$(call executable-name,$@)
 
