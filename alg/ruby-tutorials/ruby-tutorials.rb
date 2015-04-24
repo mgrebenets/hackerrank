@@ -52,3 +52,11 @@ def identify_class(obj)
         puts "It's an unknown model"
     end
 end
+
+# Ruby Tutorial - Array - Initialization
+array = Array.new
+array = []
+array1 = Array.new(1)
+array1 = [nil]
+array2 = Array.new(2, 10)
+array2 = [10, 10]
