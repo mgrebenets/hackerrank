@@ -1,7 +1,6 @@
 /// Two Two
 /// TODO: link
 
-#include "two-two.h"
 #include <iostream>
 #include <map>
 #include <vector>
@@ -9,11 +8,11 @@
 #include <queue>
 #include <cassert>
 #include <cmath>
+using namespace std;
 
-using std::map; // map vs unordered_map matters!
-using std::vector;
-using std::string;
-using std::queue;
+#if !defined(CLI_BUILD)
+#include "HackerRank.h"
+#endif
 
 typedef vector<string> PrefixSet;
 typedef PrefixSet::iterator PrefixSetIterator;
@@ -126,7 +125,7 @@ PrefixSet &buildPrefixSet(int maxPower) {
     PrefixSet *set = new PrefixSet();
     for (int p = 0; p <= maxPower; p++) {
         double po2 = pow(2, p);
-        string po2String = std::to_string(po2);
+        string po2String = to_string(po2);
         size_t lastDot = po2String.find_last_of(".");
         if (lastDot != string::npos) {
             po2String = po2String.substr(0, lastDot);
@@ -143,12 +142,12 @@ void twoTwoCpp() {
     Trie trie = Trie::buildTrie(prefixSet);
 
     int n;
-    std::cin >> n;
+    cin >> n;
     for (int i = 0; i < n; i++) {
         string input;
-        std::cin >> input;
+        cin >> input;
         int count = trie.countMatches(input);
-        std::cout << count << std::endl;
+        cout << count << endl;
     }
 }
 

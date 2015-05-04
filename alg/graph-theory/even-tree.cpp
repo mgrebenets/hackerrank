@@ -4,70 +4,68 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
-
 using namespace std;
 
-struct Cell {
-    bool adjacent;
-    bool visited;
-    int count;
-};
+#if !defined(CLI_BUILD)
+#include "HackerRank.h"
+#endif
 
-#define MAX_N   100
+typedef vector< vector<bool> > AdjacencyMatrix;
 
-// void TraceTree(Cell *adjMatrix[][], int n) {
-//     for (int i = 0; i < n; i++) {
-//         for (int j = 0; j < n; j++) {
-//             // || adjMatrix[i][j].visited
-//             if (!adjMatrix[i][j].adjacent) {
-//                 continue;
-//             }
-//             printf("%d, %d\n", i, j);
-//
-//             // adjMatrix[i][j].visited = true;
-//         }
-//     }
-// }
+ void TraceTree(const AdjacencyMatrix &graph) {
+     size_t n = graph.size();
+     vector<bool> visited(n);
 
-int main() {
+     // TODO: hash map for edges and their counts
+
+     for (int i = 0; i < n; i++) {
+         for (int j = 0; j < n; j++) {
+             // || adjMatrix[i][j].visited
+             if (!graph[i][j]) {
+                 continue;
+             }
+             printf("%d, %d\n", i, j);
+
+             // adjMatrix[i][j].visited = true;
+         }
+     }
+ }
+
+void evenTreeCpp() {
 
     int n, m;
     cin >> n >> m;
-
     // cout << n << m << endl;
 
-    Cell **graph = (Cell **)malloc(n * sizeof(Cell *));
+    // Adjacency matrix, aka graph representation
+    AdjacencyMatrix graph(n);
     for (int i = 0; i < n; i++) {
-        graph[i] = (Cell *)malloc(n * sizeof(Cell));
+        graph[i] = vector<bool>(n);
     }
-    memset(graph, 0, n * n * sizeof(Cell));
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            printf("%d", graph[i][j].adjacent);
-        }
-    }
-
-    Cell adjMatrix[MAX_N][MAX_N];
-    memset(adjMatrix, 0, MAX_N * MAX_N * sizeof(Cell));
 
     for (int i = 0; i < m; i++) {
         int u, v;
         cin >> u >> v;
 
-        int fu = u - 1, fv = v - 1;
-        // printf("%d", graph[fu][fv]);
-        // graph[fu][fv].adjacent = true;
-        // graph[fv][fu].adjacent = true;
+        graph[u - 1][v - 1] = true;
+        graph[v - 1][u - 1] = true;
+    }
 
-        adjMatrix[u - 1][v - 1].adjacent = true;
-        adjMatrix[v - 1][u - 1].adjacent = true;
-
-        // printf("[%d][%d]: %d\n", v, u, adjMatrix[v - 1][u - 1]);
-        printf("[%d][%d]: %d [%d][%d]: %d\n", u, v, adjMatrix[u - 1][v - 1].adjacent, v, u, adjMatrix[v - 1][u - 1].adjacent);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << graph[i][j] << " ";
+        }
+        cout << endl;
     }
 
     // TODO: pick any vertex to start from and do a DFS search to put proper weights on the edges (aka count things)
+    TraceTree(graph);
 
+}
 
+#ifdef CLI_BUILD
+int main() {
+    evenTreeCpp();
     return 0;
 }
+#endif

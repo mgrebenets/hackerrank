@@ -11,8 +11,9 @@
 		58515FA81AD49321004D5D2C /* two-two.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58515FA71AD49321004D5D2C /* two-two.swift */; };
 		586713CE1AB5AF23004D8FD9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586713CD1AB5AF23004D8FD9 /* main.swift */; };
 		5883D2781ABFE4FF005B5475 /* gem-stones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5883D2771ABFE4FF005B5475 /* gem-stones.swift */; };
+		58BFCD861AF2E48C004B9894 /* even-tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58BFCD831AF2E48C004B9894 /* even-tree.cpp */; };
+		58BFCD891AF2E529004B9894 /* HackerRank.c in Sources */ = {isa = PBXBuildFile; fileRef = 58BFCD871AF2E529004B9894 /* HackerRank.c */; };
 		58C6AA0C1AD732DB00F3A047 /* two-two.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C6AA0A1AD732DB00F3A047 /* two-two.cpp */; };
-		58C6AA631AD752F900F3A047 /* two-two.c in Sources */ = {isa = PBXBuildFile; fileRef = 58C6AA621AD752F900F3A047 /* two-two.c */; };
 		58E04FF81AB5AFA800606C1B /* solve-me-first.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E04FD71AB5AFA800606C1B /* solve-me-first.swift */; };
 		58E04FF91AB5AFA800606C1B /* solve-me-second.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E04FD91AB5AFA800606C1B /* solve-me-second.swift */; };
 		58E04FFB1AB5B17800606C1B /* StdIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E04FFA1AB5B17800606C1B /* StdIO.swift */; };
@@ -40,9 +41,12 @@
 		586713CA1AB5AF23004D8FD9 /* HackerRank */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HackerRank; sourceTree = BUILT_PRODUCTS_DIR; };
 		586713CD1AB5AF23004D8FD9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5883D2771ABFE4FF005B5475 /* gem-stones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "gem-stones.swift"; sourceTree = "<group>"; };
+		58BFCD831AF2E48C004B9894 /* even-tree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "even-tree.cpp"; sourceTree = "<group>"; };
+		58BFCD851AF2E48C004B9894 /* even-tree-tc0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "even-tree-tc0.txt"; sourceTree = "<group>"; };
+		58BFCD871AF2E529004B9894 /* HackerRank.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HackerRank.c; sourceTree = "<group>"; };
+		58BFCD881AF2E529004B9894 /* HackerRank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HackerRank.h; sourceTree = "<group>"; };
+		58BFCD8A1AF2E567004B9894 /* HackerRank-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HackerRank-Bridging-Header.h"; sourceTree = "<group>"; };
 		58C6AA0A1AD732DB00F3A047 /* two-two.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "two-two.cpp"; sourceTree = "<group>"; };
-		58C6AA0B1AD732DB00F3A047 /* two-two.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "two-two.h"; sourceTree = "<group>"; };
-		58C6AA621AD752F900F3A047 /* two-two.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "two-two.c"; sourceTree = "<group>"; };
 		58E04FBD1AB5AFA800606C1B /* counting-sort-1-tc0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "counting-sort-1-tc0.txt"; sourceTree = "<group>"; };
 		58E04FBE1AB5AFA800606C1B /* counting-sort-2-tc0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "counting-sort-2-tc0.txt"; sourceTree = "<group>"; };
 		58E04FBF1AB5AFA800606C1B /* counting-sort-3-tc0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "counting-sort-3-tc0.txt"; sourceTree = "<group>"; };
@@ -97,8 +101,6 @@
 				5883D2771ABFE4FF005B5475 /* gem-stones.swift */,
 				58390DD71ABBB6E30077CC3D /* pangrams.swift */,
 				58C6AA0A1AD732DB00F3A047 /* two-two.cpp */,
-				58C6AA621AD752F900F3A047 /* two-two.c */,
-				58C6AA0B1AD732DB00F3A047 /* two-two.h */,
 				58390DD81ABBB6E30077CC3D /* tc */,
 			);
 			path = strings;
@@ -121,6 +123,9 @@
 				58E04FB71AB5AFA800606C1B /* alg */,
 				586713CD1AB5AF23004D8FD9 /* main.swift */,
 				58E04FFA1AB5B17800606C1B /* StdIO.swift */,
+				58BFCD871AF2E529004B9894 /* HackerRank.c */,
+				58BFCD881AF2E529004B9894 /* HackerRank.h */,
+				58BFCD8A1AF2E567004B9894 /* HackerRank-Bridging-Header.h */,
 				586713CB1AB5AF23004D8FD9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -133,9 +138,27 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		58BFCD801AF2E48C004B9894 /* graph-theory */ = {
+			isa = PBXGroup;
+			children = (
+				58BFCD831AF2E48C004B9894 /* even-tree.cpp */,
+				58BFCD841AF2E48C004B9894 /* tc */,
+			);
+			path = "graph-theory";
+			sourceTree = "<group>";
+		};
+		58BFCD841AF2E48C004B9894 /* tc */ = {
+			isa = PBXGroup;
+			children = (
+				58BFCD851AF2E48C004B9894 /* even-tree-tc0.txt */,
+			);
+			path = tc;
+			sourceTree = "<group>";
+		};
 		58E04FB71AB5AFA800606C1B /* alg */ = {
 			isa = PBXGroup;
 			children = (
+				58BFCD801AF2E48C004B9894 /* graph-theory */,
 				58390DD11ABBB6E30077CC3D /* strings */,
 				58E04FB81AB5AFA800606C1B /* arr-n-srt */,
 				58E04FC01AB5AFA800606C1B /* geometry */,
@@ -285,8 +308,9 @@
 				58515FA81AD49321004D5D2C /* two-two.swift in Sources */,
 				58C6AA0C1AD732DB00F3A047 /* two-two.cpp in Sources */,
 				58E04FF81AB5AFA800606C1B /* solve-me-first.swift in Sources */,
+				58BFCD891AF2E529004B9894 /* HackerRank.c in Sources */,
+				58BFCD861AF2E48C004B9894 /* even-tree.cpp in Sources */,
 				586713CE1AB5AF23004D8FD9 /* main.swift in Sources */,
-				58C6AA631AD752F900F3A047 /* two-two.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
