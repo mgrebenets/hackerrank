@@ -8,10 +8,18 @@ public func gemStones() {
     }
 
     // TODO: this is ugly, find a better way to get all latin1 chars
+    // for example look for a way to use "a"..."z" range
+//    println("a"..."z")
+//    println(String(stringInterpolationSegment: "a"..."z"))
+//    let asciiSet1 = Set(String(stringInterpolationSegment: "a"..."z"))
+//    println(asciiSet1)
+    // map("a"..."z", println)    
     let asciiSet = Set("abcdefghijklmnopqrstuvwxyz")
+    println(asciiSet)
     let intersection = input.reduce(asciiSet) { acc, str in
         acc.intersect(str)
     }
+
     println(intersection.count)
 }
 
