@@ -44,7 +44,7 @@ int TraceGraph(const AdjacencyMatrix &graph, int vertex, vector<bool> &visited, 
     return weight;
 }
 
-int CountComponents(const AdjacencyMatrix &graph) {
+int CountEdges(const AdjacencyMatrix &graph) {
     // pick any vertex to start from and do a DFS search to put proper weights on the edges (aka count things)
     // assume that input has no gaps in vertex indeces and pick 0 as starting vertex
 
@@ -74,7 +74,7 @@ void evenTreeCpp() {
         graph[v - 1][u - 1] = true;
     }
 
-    cout << CountComponents(graph) << endl;
+    cout << CountEdges(graph) << endl;
 }
 
 #ifdef CLI_BUILD
