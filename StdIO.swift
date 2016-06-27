@@ -30,7 +30,7 @@ public func readLn() -> String {
 /// Read line from standard input and convert to integer
 ///:returns: integer value
 public func readLn() -> Int {
-    return getLine().toInt()!
+    return Int(getLine())!
 }
 
 /// Read line and convert to array of strings (words)
@@ -43,5 +43,5 @@ public func readLn() -> [String] {
 ///:returns: array of integers
 public func readLn() -> [Int] {
     let words: [String] = readLn()
-    return words.map { $0.toInt()! }
+    return words.map { Int($0)! }
 }
